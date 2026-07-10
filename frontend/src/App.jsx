@@ -103,6 +103,9 @@ Ask me anything related to:
     ]
   }
 };
+const handleNewChat = () => {
+  setMessages([]);
+};
 
 const STORAGE_KEY = 'agri_chat_history';
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
@@ -284,6 +287,7 @@ function App() {
           translations={activeTranslations}
           chatBoxRef={chatBoxRef}
         />
+      
 
         <InputArea
           inputValue={inputValue}

@@ -1,31 +1,127 @@
-function Sidebar({ isOpen, toggleDrawer, translations, examples, onExampleSelect, onClearHistory, onDownloadPDF }) {
+import {
+  X,
+  Plus,
+  FileText,
+  Trash2,
+  Sparkles,
+  Leaf,
+} from "lucide-react";
+
+function Sidebar({
+  isOpen,
+  toggleDrawer,
+  translations,
+  examples,
+  onExampleSelect,
+  onClearHistory,
+  onDownloadPDF,
+}) {
   return (
     <>
-      <div className={`drawer-overlay ${isOpen ? 'show' : ''}`} onClick={toggleDrawer}></div>
-      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <button className="close-btn" onClick={toggleDrawer} title="Close Menu">
-          ✕
+      <div
+        className={`drawer-overlay ${isOpen ? "show" : ""}`}
+        onClick={toggleDrawer}
+      />
+
+      <aside className={`sidebar ${isOpen ? "open" : ""}`}>
+
+        {/* Header */}
+
+        <div className="sidebar-header">
+
+          <div className="sidebar-logo">
+
+            <div className="sidebar-logo-icon">
+              <Leaf size={22} />
+            </div>
+
+            <div>
+
+              <h2>Agriculture AI</h2>
+
+              <span>Smart Farming Assistant</span>
+
+            </div>
+
+          </div>
+
+          <button
+            className="close-btn"
+            onClick={toggleDrawer}
+          >
+            <X size={18} />
+          </button>
+
+        </div>
+
+        {/* New Chat */}
+
+        <button className="new-chat-btn">
+
+          <Plus size={18} />
+
+          New Chat
+
         </button>
 
-        <div className="examples">
-          <h3>{translations.examplesTitle}</h3>
-          {examples.map((example, index) => (
-            <button key={example} onClick={() => onExampleSelect(example)}>
-              {['🌱', '🌾', '🌿', '💧'][index]} {example}
-            </button>
-          ))}
+        {/* Examples */}
+
+        <div className="sidebar-title">
+
+          <Sparkles size={16} />
+
+          <span>{translations.examplesTitle}</span>
+
         </div>
 
-        <div className="drawer-section">
-          <h3>{translations.actionsTitle}</h3>
-          <button className="drawer-btn pdf-btn" onClick={onDownloadPDF}>
-            📄 Download PDF
-          </button>
-          <button className="drawer-btn clear-btn" onClick={onClearHistory}>
-            🗑️ Clear History
-          </button>
+        <div className="example-list">
+
+          {examples.map((example, index) => (
+
+            <button
+              key={index}
+              className="example-btn"
+              onClick={() => onExampleSelect(example)}
+            >
+
+              {example}
+
+            </button>
+
+          ))}
+
         </div>
-      </div>
+
+        {/* Bottom */}
+
+        <div className="sidebar-bottom">
+
+          <button
+            className="drawer-btn"
+            onClick={onDownloadPDF}
+          >
+
+            <FileText size={18} />
+
+            Export Chat
+
+          </button>
+
+          <button
+            className="drawer-btn danger"
+            onClick={onClearHistory}
+          >
+
+            <Trash2 size={18} />
+
+            Clear Chat
+
+          </button>
+
+        </div>
+
+      </aside>
+
     </>
   );
 }
