@@ -235,16 +235,6 @@ The assistant politely rejects questions outside the agriculture domain.
 
 ---
 
-# 📸 Screenshots
-
-> Add screenshots here
-
-- Home Page
-- Chat Interface
-- Backend Execution
-- Model Response
-- Training Process
-
 ---
 
 # 🚀 Future Enhancements
